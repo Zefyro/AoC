@@ -9,43 +9,29 @@ public class AoC2024 {
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine("\nAdvent of Code 2024 - Day 1");
         string[] values = input.Split('\n');
-        
-        List<string> list_left = [];
-        List<string> list_right = [];
+
+        List<int> left = [], right = [];
 
         foreach (string value in values) {
-            string[] pairs = value.Split("   "); 
-            list_left.Add(pairs[0]);
-            list_right.Add(pairs[1]);
-        }
-        
-        List<int> left = [];
-        foreach (string value in list_left) {
-            left.Add(int.Parse(value));
-        }
-
-        List<int> right = [];
-        foreach (string value in list_right) {
-            right.Add(int.Parse(value));
+            string[] pairs = value.Split("   ");
+            left.Add(int.Parse(pairs[0]));
+            right.Add(int.Parse(pairs[1]));
         }
 
         left.Sort();
         right.Sort();
 
-        List<int> diffs = [];
+        int sum = 0;
         for (int i = 0; i < left.Count; i++) {
-            diffs.Add(Math.Abs(left[i] - right[i]));
+            sum += Math.Abs(left[i] - right[i]);
         }
 
-        int sum = 0;
-        foreach (int diff in diffs) {
-            sum += diff;
-        }
         Console.WriteLine($"Part 1: {sum}");
 
         int similarity = 0;
         foreach (int l in left)
             similarity += l * right.Count(x => x == l);
+
         Console.WriteLine($"Part 2: {similarity}");
         Console.ForegroundColor = ConsoleColor.White;
     }
@@ -55,8 +41,8 @@ public class AoC2024 {
 
         string[] reports = input.Split('\n');
         int safe_reports = 0;
-
         List<int[]> all_reports = [];
+
         foreach (string report in reports) {
             List<int> levels = [];
             foreach (string level in report.Split(' ')) 
@@ -91,7 +77,7 @@ public class AoC2024 {
     }
     public static void Day3(string input) {
         Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("\nAdvent of Code 2024 - Day 2");
+        Console.WriteLine("\nAdvent of Code 2024 - Day 3");
         
         Console.ForegroundColor = ConsoleColor.White;
     }
