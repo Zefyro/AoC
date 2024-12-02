@@ -1,1 +1,1 @@
-dotnet run --project AoC
+dotnet run --project AoC2024

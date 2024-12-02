@@ -1,9 +1,9 @@
-﻿namespace AoC;
-public class AoC2024 {
+﻿namespace AoC2024;
+public class AoC {
     public static void Main(string[] args) {
-        Day1(File.ReadAllText("inputs/day1.txt"));
-        Day2(File.ReadAllText("inputs/day2.txt"));
-        //Day3(File.ReadAllText("inputs/day3.txt"));
+        Day1(File.ReadAllText("AoC2024/inputs/day1.txt"));
+        Day2(File.ReadAllText("AoC2024/inputs/day2.txt"));
+        //Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
     }
     public static void Day1(string input) {
         Console.ForegroundColor = ConsoleColor.DarkGreen;

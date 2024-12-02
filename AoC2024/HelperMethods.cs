@@ -1,5 +1,4 @@
-namespace AoC;
-
+namespace AoC2024;
 public static class HelperMethods
 {
     public static bool Day2_IsSafe(int[] report) {
