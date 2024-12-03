@@ -98,7 +98,7 @@ public class AoC {
 
         while (true) {
             if (peek(0) == '\0') break;
-            if (is_mul()) {
+            else if (is_mul()) {
                 _position += 3;
                 if (peek(0) == '(') {
                     int start = _position + 1;
@@ -127,13 +127,9 @@ public class AoC {
 
         while (true) {
             if (peek(0) == '\0') break;
-            if (is_do()) {
-                enabled = true;
-            }
-            if (is_dont()) {
-                enabled = false;
-            }
-            if (is_mul() && enabled) {
+            else if (is_do()) enabled = true;
+            else if (is_dont()) enabled = false;
+            else if (is_mul() && enabled) {
                 _position += 3;
                 if (peek(0) == '(') {
                     int start = _position + 1;
