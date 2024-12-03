@@ -3,7 +3,7 @@ public class AoC {
     public static void Main(string[] args) {
         Day1(File.ReadAllText("AoC2024/inputs/day1.txt"));
         Day2(File.ReadAllText("AoC2024/inputs/day2.txt"));
-        //Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
+        Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
     }
     public static void Day1(string input) {
         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -43,7 +43,7 @@ public class AoC {
         int safe_reports = 0;
         List<int[]> all_reports = [];
 
-        bool is_safe(int[] report) {
+        static bool is_safe(int[] report) {
             int _safety = 0;
             for (int i = 1; i < report.Length; i++) {
                 if (report[i-1] < report[i] && (report[i] - report[i-1]) <= 3)
@@ -90,6 +90,68 @@ public class AoC {
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine("\nAdvent of Code 2024 - Day 3");
         
+        string _text = input;
+        int _position = 0;
+        int total_product = 0;
+        char peek(int offset) => (_position + offset >= _text.Length) ? '\0' : _text[_position + offset];
+        bool is_mul() => peek(0) == 'm' && peek(1) == 'u' && peek(2) == 'l';
+
+        while (true) {
+            if (peek(0) == '\0') break;
+            if (is_mul()) {
+                _position += 3;
+                if (peek(0) == '(') {
+                    int start = _position + 1;
+
+                    for (int i = 1; i <= 8; i++)
+                        if (peek(i) == ')') {
+                            _position += i;
+                            string[] num = _text[start.._position].Split(',');
+                            if (num.Length == 2)
+                                total_product += int.Parse(num[0]) * int.Parse(num[1]);
+                            break;
+                        }
+                }
+            }
+            _position++;
+        }
+
+        Console.WriteLine($"Part 1:  {total_product}");
+
+        _position = 0;
+        total_product = 0;
+        bool enabled = true;
+        bool is_do() => peek(0) == 'd' && peek(1) == 'o' && peek(2) == '(' && peek(3) == ')';
+        bool is_dont() => peek(0) == 'd' && peek(1) == 'o' && peek(2) == 'n' 
+            && peek(3) == '\'' && peek(4) == 't' && peek(5) == '(' && peek(6) == ')';
+
+        while (true) {
+            if (peek(0) == '\0') break;
+            if (is_do()) {
+                enabled = true;
+            }
+            if (is_dont()) {
+                enabled = false;
+            }
+            if (is_mul() && enabled) {
+                _position += 3;
+                if (peek(0) == '(') {
+                    int start = _position + 1;
+
+                    for (int i = 1; i <= 8; i++)
+                        if (peek(i) == ')') {
+                            _position += i;
+                            string[] num = _text[start.._position].Split(',');
+                            if (num.Length == 2)
+                                total_product += int.Parse(num[0]) * int.Parse(num[1]);
+                            break;
+                        }
+                }
+            }
+            _position++;
+        }
+
+        Console.WriteLine($"Part 2:  {total_product}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }

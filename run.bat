@@ -1,1 +1,0 @@
-dotnet run --project AoC2024
