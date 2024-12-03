@@ -43,13 +43,24 @@ public class AoC {
         int safe_reports = 0;
         List<int[]> all_reports = [];
 
+        bool is_safe(int[] report) {
+            int _safety = 0;
+            for (int i = 1; i < report.Length; i++) {
+                if (report[i-1] < report[i] && (report[i] - report[i-1]) <= 3)
+                    _safety++;
+                else if (report[i-1] > report[i] && (report[i-1] - report[i]) <= 3)
+                    _safety--;
+            }
+            return report.Length - 1 == Math.Abs(_safety);
+        }
+
         foreach (string report in reports) {
             List<int> levels = [];
             foreach (string level in report.Split(' ')) 
                 levels.Add(int.Parse(level));
 
             all_reports.Add([.. levels]);
-            if (HelperMethods.Day2_IsSafe([.. levels]))
+            if (is_safe([.. levels]))
                 safe_reports++;
         }
 
@@ -58,13 +69,13 @@ public class AoC {
         safe_reports = 0;
         
         foreach (int[] report in all_reports) {
-            if (HelperMethods.Day2_IsSafe(report))
+            if (is_safe(report))
                 safe_reports++;
             else {
                 for (int i = 0; i < report.Length; i++) {
                     List<int> new_report = [.. report];
                     new_report.RemoveAt(i);
-                    if (HelperMethods.Day2_IsSafe([.. new_report])) {
+                    if (is_safe([.. new_report])) {
                         safe_reports++;
                         break;
                     }
