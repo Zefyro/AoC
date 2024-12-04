@@ -6,6 +6,7 @@ public class AoC {
         AoC2019.AoC.Main();
         AoC2020.AoC.Main();
         AoC2021.AoC.Main();
+        AoC2022.AoC.Main();
         AoC2023.AoC.Main();
         AoC2024.AoC.Main();
     }

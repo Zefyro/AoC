@@ -6,6 +6,7 @@
 		<ProjectReference Include="..\AoC2019\AoC2019.csproj" />
 		<ProjectReference Include="..\AoC2020\AoC2020.csproj" />
 		<ProjectReference Include="..\AoC2021\AoC2021.csproj" />
+		<ProjectReference Include="..\AoC2022\AoC2022.csproj" />
 		<ProjectReference Include="..\AoC2023\AoC2023.csproj" />
 		<ProjectReference Include="..\AoC2024\AoC2024.csproj" />
 	</ItemGroup>
