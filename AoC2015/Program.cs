@@ -5,6 +5,7 @@ public class AoC {
         Day2(File.ReadAllText("AoC2015/inputs/day2.txt"));
         Day3(File.ReadAllText("AoC2015/inputs/day3.txt"));
         Day4(File.ReadAllText("AoC2015/inputs/day4.txt"));
+        Day5(File.ReadAllText("AoC2015/inputs/day5.txt"));
     }
     public static void Day1(string input) {
         Console.WriteLine("\nAdvent of Code 2015 - Day 1");
@@ -157,6 +158,43 @@ public class AoC {
         }
 
         Console.WriteLine($"Part 2: {six_zeros}");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    public static void Day5(string input) {
+        Console.WriteLine("\nAdvent of Code 2015 - Day 5");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+        string[] strings = input.Split('\n');
+        int total_nice_strings = 0;
+        string[] illegal_chars = ["ab", "cd", "pq", "xy"];
+        string vowels = "aeiou";
+
+        foreach (string testable in strings) {
+            char prev = testable[0];
+            bool double_char = false, has_illegal = false;
+            int vowel_count = vowels.Contains(prev) ? 1 : 0;
+
+            for (int i = 1; i < testable.Length; i++) {
+                if (prev == testable[i])
+                    double_char = true;
+                if (illegal_chars.Contains($"{prev}{testable[i]}"))
+                    has_illegal = true;
+                if (vowels.Contains(testable[i]))
+                    vowel_count++;
+                
+                prev = testable[i];
+            }
+
+            if (double_char && !has_illegal && vowel_count >= 3)
+                total_nice_strings++;
+        }
+
+        Console.WriteLine($"Part 1: {total_nice_strings}");
+
+        total_nice_strings = 0;
+        
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"Part 2: {total_nice_strings}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }
