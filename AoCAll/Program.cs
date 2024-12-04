@@ -5,6 +5,7 @@ public class AoC {
         AoC2018.AoC.Main(args);
         AoC2019.AoC.Main(args);
         AoC2020.AoC.Main(args);
+        AoC2021.AoC.Main(args);
         AoC2023.AoC.Main(args);
         AoC2024.AoC.Main(args);
     }
