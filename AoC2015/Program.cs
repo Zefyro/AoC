@@ -4,6 +4,7 @@ public class AoC {
         Day1(File.ReadAllText("AoC2015/inputs/day1.txt"));
         Day2(File.ReadAllText("AoC2015/inputs/day2.txt"));
         Day3(File.ReadAllText("AoC2015/inputs/day3.txt"));
+        Day4(File.ReadAllText("AoC2015/inputs/day4.txt"));
     }
     public static void Day1(string input) {
         Console.WriteLine("\nAdvent of Code 2015 - Day 1");
@@ -114,6 +115,48 @@ public class AoC {
         houses_visited = santa_visited.Count;
 
         Console.WriteLine($"Part 2:  {houses_visited}");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    public static void Day4(string input) {
+        Console.WriteLine("\nAdvent of Code 2015 - Day 4");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+        int five_zeros, six_zeros;
+        byte[] input_bytes, hash_bytes;
+        System.Text.StringBuilder sb = new();
+        for (int i = 0;; i++)
+        {
+            input_bytes = System.Text.Encoding.UTF8.GetBytes(input + i);
+            hash_bytes = System.Security.Cryptography.MD5.HashData(input_bytes);
+            sb.Clear();
+
+            foreach (byte b in hash_bytes)
+                sb.Append(b.ToString("x2"));
+
+            if (sb.ToString().StartsWith("00000")) {
+                five_zeros = i;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Part 1: {five_zeros}");
+        
+        for (int i = 0;; i++)
+        {
+            input_bytes = System.Text.Encoding.UTF8.GetBytes(input + i);
+            hash_bytes = System.Security.Cryptography.MD5.HashData(input_bytes);
+            sb.Clear();
+
+            foreach (byte b in hash_bytes)
+                sb.Append(b.ToString("x2"));
+
+            if (sb.ToString().StartsWith("000000")) {
+                six_zeros = i;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Part 2: {six_zeros}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }
