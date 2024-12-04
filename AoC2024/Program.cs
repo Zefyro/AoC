@@ -65,7 +65,7 @@ public class AoC {
                 safe_reports++;
         }
 
-        Console.WriteLine($"Part 1:  {safe_reports}");
+        Console.WriteLine($"Part 1: {safe_reports}");
         
         safe_reports = 0;
         
@@ -84,7 +84,7 @@ public class AoC {
             }
         }
         
-        Console.WriteLine($"Part 2:  {safe_reports}");
+        Console.WriteLine($"Part 2: {safe_reports}");
         Console.ForegroundColor = ConsoleColor.White;
     }
     public static void Day3(string input) {
@@ -117,7 +117,7 @@ public class AoC {
             _position++;
         }
 
-        Console.WriteLine($"Part 1:  {total_product}");
+        Console.WriteLine($"Part 1: {total_product}");
 
         _position = 0;
         total_product = 0;
@@ -148,7 +148,7 @@ public class AoC {
             _position++;
         }
 
-        Console.WriteLine($"Part 2:  {total_product}");
+        Console.WriteLine($"Part 2: {total_product}");
         Console.ForegroundColor = ConsoleColor.White;
     }
     public static void Day4(string input) {

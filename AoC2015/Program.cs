@@ -26,8 +26,8 @@ public class AoC {
             }
         }
         
-        Console.WriteLine($"Part 1:  {floor}");
-        Console.WriteLine($"Part 2:  {basement_step}");
+        Console.WriteLine($"Part 1: {floor}");
+        Console.WriteLine($"Part 2: {basement_step}");
         Console.ForegroundColor = ConsoleColor.White;
     }
     public static void Day2(string input) {
@@ -58,8 +58,8 @@ public class AoC {
             total_ribbon += 2*box[0] + 2*box[1];
         }
 
-        Console.WriteLine($"Part 1:  {total_paper}");
-        Console.WriteLine($"Part 2:  {total_ribbon}");
+        Console.WriteLine($"Part 1: {total_paper}");
+        Console.WriteLine($"Part 2: {total_ribbon}");
         Console.ForegroundColor = ConsoleColor.White;
     }
     public static void Day3(string input) {
@@ -81,7 +81,7 @@ public class AoC {
         }
         houses_visited = santa_visited.Count;
 
-        Console.WriteLine($"Part 1:  {houses_visited}");
+        Console.WriteLine($"Part 1: {houses_visited}");
         
         santa_visited.Clear();
         HashSet<(int, int)> robo_visited = [];
@@ -115,7 +115,7 @@ public class AoC {
         santa_visited.UnionWith(robo_visited);
         houses_visited = santa_visited.Count;
 
-        Console.WriteLine($"Part 2:  {houses_visited}");
+        Console.WriteLine($"Part 2: {houses_visited}");
         Console.ForegroundColor = ConsoleColor.White;
     }
     public static void Day4(string input) {
