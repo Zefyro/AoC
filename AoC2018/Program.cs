@@ -1,6 +1,6 @@
 ﻿namespace AoC2018;
 public class AoC {
-    public static void Main(string[] args) {
+    public static void Main() {
         Day1(File.ReadAllText("AoC2018/inputs/day1.txt"));
     }
     public static void Day1(string input) {

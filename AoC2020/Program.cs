@@ -1,6 +1,6 @@
 ﻿namespace AoC2020;
 public class AoC {
-    public static void Main(string[] args) {
+    public static void Main() {
         Day1(File.ReadAllText("AoC2020/inputs/day1.txt"));
     }
     public static void Day1(string input) {

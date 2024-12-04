@@ -1,6 +1,6 @@
 ﻿namespace AoC2021;
 public class AoC {
-    public static void Main(string[] args) {
+    public static void Main() {
         Day1(File.ReadAllText("AoC2021/inputs/day1.txt"));
     }
     public static void Day1(string input) {
@@ -16,7 +16,7 @@ public class AoC {
         Console.WriteLine($"Part 1: {larger}");
 
         larger = 0;
-        for (int i = 4; i < nums.Length; i++)
+        for (int i = 3; i < nums.Length; i++)
             if (nums[i-3] + nums[i-2] + nums[i-1] < nums[i-2] + nums[i-1] + nums[i])
                 larger++;
 

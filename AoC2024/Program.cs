@@ -1,6 +1,6 @@
 ﻿namespace AoC2024;
 public class AoC {
-    public static void Main(string[] args) {
+    public static void Main() {
         Day1(File.ReadAllText("AoC2024/inputs/day1.txt"));
         Day2(File.ReadAllText("AoC2024/inputs/day2.txt"));
         Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
