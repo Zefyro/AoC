@@ -4,7 +4,7 @@ public class AoC {
         Day1(File.ReadAllText("AoC2024/inputs/day1.txt"));
         Day2(File.ReadAllText("AoC2024/inputs/day2.txt"));
         Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
-        Day4(File.ReadAllLines("AoC2024/inputs/day4.txt"));
+        Day4(File.ReadAllText("AoC2024/inputs/day4.txt"));
     }
     public static void Day1(string input) {
         Console.WriteLine("\nAdvent of Code 2024 - Day 1");
@@ -151,17 +151,18 @@ public class AoC {
         Console.WriteLine($"Part 2:  {total_product}");
         Console.ForegroundColor = ConsoleColor.White;
     }
-    public static void Day4(string[] input) {
+    public static void Day4(string input) {
         Console.WriteLine("\nAdvent of Code 2024 - Day 4");
         Console.ForegroundColor = ConsoleColor.DarkGreen;
 
+        string[] lines = input.Split('\n');
         int total = 0;
         int[][] dirs = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
-        char get_char(int x, int y) => x < 0 || y < 0 || x >= input.Length || y >= input[x].Length ? '\0' : input[x][y];
+        char get_char(int x, int y) => x < 0 || y < 0 || x >= lines.Length || y >= lines[x].Length ? '\0' : lines[x][y];
 
-        for (int x = 0; x < input.Length; x++)
-            for (int y = 0; y < input[x].Length; y++) 
-                if (input[x][y] == 'X')
+        for (int x = 0; x < lines.Length; x++)
+            for (int y = 0; y < lines[x].Length; y++) 
+                if (lines[x][y] == 'X')
                     foreach (int[] dir in dirs) {
                         bool valid = true;
                         for (int i = 1; i <= 3; i++)
@@ -175,9 +176,9 @@ public class AoC {
         total = 0;
         dirs = [[-1, -1], [-1, 1], [1, 1], [1, -1]]; 
 
-        for (int x = 0; x < input.Length; x++)
-            for (int y = 0; y < input[x].Length; y++) 
-                if (input[x][y] == 'A') {
+        for (int x = 0; x < lines.Length; x++)
+            for (int y = 0; y < lines[x].Length; y++) 
+                if (lines[x][y] == 'A') {
                     if (get_char(x+dirs[0][0], y+dirs[0][1]) == 'M' &&
                         get_char(x+dirs[1][0], y+dirs[1][1]) == 'M' &&
                         get_char(x+dirs[2][0], y+dirs[2][1]) == 'S' &&
