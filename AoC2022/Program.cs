@@ -7,19 +7,10 @@ public class AoC {
         Console.WriteLine("\nAdvent of Code 2022 - Day 1");
         Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-        int[][] elfs = [.. input.Replace("\r\n", "\n").Split("\n\n").Select(elf => elf.Split('\n').Select(int.Parse).ToArray())];
-        List<int> total_calories = [];
+        List<int> totals = [.. input.Replace(Environment.NewLine, "\n").Split("\n\n").Select(x => x.Split('\n').Select(int.Parse).Sum()).OrderByDescending(x => x)];
 
-        foreach(int[] calories in elfs) {
-            int cal = 0;
-            foreach (int c in calories)
-                cal += c;
-            total_calories.Add(cal);
-        }
-
-        total_calories.Sort();
-        int most_calories = total_calories[^1];
-        int top_three = total_calories[^1] + total_calories[^2] + total_calories[^3];
+        int most_calories = totals[0];
+        int top_three = totals[0] + totals[1] + totals[2];
 
         Console.WriteLine($"Part 1: {most_calories}");
         Console.WriteLine($"Part 2: {top_three}");
