@@ -3,6 +3,7 @@ public class AoC {
     public static void Main(string[] args) {
         Day1(File.ReadAllText("AoC2015/inputs/day1.txt"));
         Day2(File.ReadAllText("AoC2015/inputs/day2.txt"));
+        Day3(File.ReadAllText("AoC2015/inputs/day3.txt"));
     }
     public static void Day1(string input) {
         Console.WriteLine("\nAdvent of Code 2015 - Day 1");
@@ -57,6 +58,62 @@ public class AoC {
 
         Console.WriteLine($"Part 1:  {total_paper}");
         Console.WriteLine($"Part 2:  {total_ribbon}");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    public static void Day3(string input) {
+        Console.WriteLine("\nAdvent of Code 2015 - Day 3");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+        int houses_visited, x = 0, y = 0;
+        HashSet<(int, int)> santa_visited = [];
+
+        for (int i = 0; i < input.Length; i++) {
+            (x, y) = input[i] switch {
+                '^' => (x, y + 1),
+                'v' => (x, y - 1),
+                '>' => (x + 1, y),
+                '<' => (x - 1, y),
+                _ => (x, y)
+            };
+            santa_visited.Add((x, y));
+        }
+        houses_visited = santa_visited.Count;
+
+        Console.WriteLine($"Part 1:  {houses_visited}");
+        
+        santa_visited.Clear();
+        HashSet<(int, int)> robo_visited = [];
+        x = 0; 
+        y = 0;
+        int sx = 0, sy = 0, rx = 0, ry = 0;
+        bool is_santa = false;
+
+        for (int i = 0; i < input.Length; i++) {
+            is_santa = !is_santa;
+            if (is_santa)
+                (x, y) = (sx, sy);
+            else
+                (x, y) = (rx, ry);
+            (x, y) = input[i] switch {
+                '^' => (x, y + 1),
+                'v' => (x, y - 1),
+                '>' => (x + 1, y),
+                '<' => (x - 1, y),
+                _ => (x, y)
+            };
+            if (is_santa) {
+                santa_visited.Add((x, y));
+                (sx, sy) = (x, y);
+            }
+            else {
+                robo_visited.Add((x, y));
+                (rx, ry) = (x, y);
+            }
+        }
+        santa_visited.UnionWith(robo_visited);
+        houses_visited = santa_visited.Count;
+
+        Console.WriteLine($"Part 2:  {houses_visited}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }
