@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2023", "AoC2023\AoC2023.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoCAll", "AoCAll\AoCAll.csproj", "{800825CF-74E3-43DE-B833-7611CCAB699E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2018", "AoC2018\AoC2018.csproj", "{22907CC8-A6EC-4331-95F1-725BD265A9DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{800825CF-74E3-43DE-B833-7611CCAB699E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{800825CF-74E3-43DE-B833-7611CCAB699E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{800825CF-74E3-43DE-B833-7611CCAB699E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22907CC8-A6EC-4331-95F1-725BD265A9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22907CC8-A6EC-4331-95F1-725BD265A9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22907CC8-A6EC-4331-95F1-725BD265A9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22907CC8-A6EC-4331-95F1-725BD265A9DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 
   <ItemGroup>
 		<ProjectReference Include="..\AoC2015\AoC2015.csproj" />
+		<ProjectReference Include="..\AoC2018\AoC2018.csproj" />
 		<ProjectReference Include="..\AoC2023\AoC2023.csproj" />
 		<ProjectReference Include="..\AoC2024\AoC2024.csproj" />
 	</ItemGroup>
