@@ -2,6 +2,7 @@
 public class AoC {
     public static void Main() {
         AoC2015.AoC.Main();
+        AoC2016.AoC.Main();
         AoC2017.AoC.Main();
         AoC2018.AoC.Main();
         AoC2019.AoC.Main();
