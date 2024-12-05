@@ -5,6 +5,7 @@ public class AoC {
         Day2(File.ReadAllText("AoC2024/inputs/day2.txt"));
         Day3(File.ReadAllText("AoC2024/inputs/day3.txt"));
         Day4(File.ReadAllText("AoC2024/inputs/day4.txt"));
+        Day5(File.ReadAllText("AoC2024/inputs/day5.txt"));
     }
     public static void Day1(string input) {
         Console.WriteLine("\nAdvent of Code 2024 - Day 1");
@@ -201,6 +202,54 @@ public class AoC {
                 }
 
         Console.WriteLine($"Part 2: {total}");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    public static void Day5(string input) {
+        Console.WriteLine("\nAdvent of Code 2024 - Day 5");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+        string[] inputs = input.Replace(Environment.NewLine, "\n").Split("\n\n");
+        int[][] rules = [.. inputs[0].Split('\n').Select(x => x.Split('|').Select(int.Parse).ToArray())];
+        int[][] values = [.. inputs[1].Split('\n').Select(x => x.Split(',').Select(int.Parse).ToArray())];
+        int mid_total = 0;
+        List<int[]> wrong_lines = [];
+
+        bool correct(int[] line) {
+            for (int i = 0; i < line.Length; i++) 
+                foreach (int[] rule in rules) 
+                    if (rule[0] == line[i])
+                        for (int j = 0; j < line.Length; j++) 
+                            if (rule[1] == line[j] && i > j)
+                                return false;
+            return true;
+        }
+        
+        foreach (int[] line in values) {
+            if (correct(line))
+                mid_total += line[line.Length / 2];
+            else
+                wrong_lines.Add(line);
+        }
+
+        Console.WriteLine($"Part 1: {mid_total}");
+
+        int wrong_mid_total = 0;
+
+        foreach (int[] wrong in wrong_lines) {
+            List<int> line = [.. wrong];
+            while (!correct([.. line])) {
+                for (int i = 0; i < line.Count; i++)
+                    for (int j = 0; j < line.Count; j++)
+                        foreach (int[] rule in rules) 
+                            if (rule[0] == line[i] && rule[1] == line[j] && i > j) {
+                                line.Add(line[j]);
+                                line.Remove(line[j]);
+                            }
+            }
+            wrong_mid_total += line[line.Count / 2];
+        }
+
+        Console.WriteLine($"Part 2: {wrong_mid_total}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }
