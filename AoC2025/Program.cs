@@ -8,7 +8,8 @@ public class AoC
     {
         //Day1(File.ReadAllText("./inputs/day1.txt"));
         //Day2(File.ReadAllText("./inputs/day2.txt"));
-        Day3(File.ReadAllText("./inputs/day3.txt"));
+        //Day3(File.ReadAllText("./inputs/day3.txt"));
+        Day4(File.ReadAllText("./inputs/day4.txt"));
     }
     public static void Day1(string input)
     {
@@ -157,6 +158,72 @@ public class AoC
         }
 
         Console.WriteLine($"Part 2: {total_joltage}");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    public static void Day4(string input)
+    {
+        Console.WriteLine("\nAdvent of Code 2025 - Day 4");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        string[] rows = input.Split('\n');
+
+        int reachable = 0, x, y;
+        string area;
+
+        for (x = 0; x < rows[0].Length; x++)
+        {
+            for (y = 0; y < rows.Length; y++)
+            {
+                if (rows[y][x] != '@') continue;
+                area = "";
+                if (y - 1 >= 0 && x - 1 >= 0) area += rows[y - 1][x - 1];
+                if (y - 1 >= 0) area += rows[y - 1][x];
+                if (y - 1 >= 0 && x + 1 < rows[0].Length) area += rows[y - 1][x + 1];
+                if (x - 1 >= 0) area += rows[y][x - 1];
+                if (x + 1 < rows[0].Length) area += rows[y][x + 1];
+                if (y + 1 < rows.Length && x - 1 >= 0) area += rows[y + 1][x - 1];
+                if (y + 1 < rows.Length) area += rows[y + 1][x];
+                if (y + 1 < rows.Length && x + 1 < rows[0].Length) area += rows[y + 1][x + 1];
+                if (area.Count('@') < 4) reachable++;
+            }
+        }
+
+        Console.WriteLine($"Part 1: {reachable}");
+
+        reachable = 0;
+        bool changed;
+        do
+        {
+            changed = false;
+            for (y = 0; y < rows.Length; y++)
+            {
+                if (changed) break;
+                for (x = 0; x < rows[0].Length; x++)
+                {
+                    if (changed) break;
+                    if (rows[y][x] != '@') continue;
+                    area = "";
+                    if (y - 1 >= 0 && x - 1 >= 0) area += rows[y - 1][x - 1];
+                    if (y - 1 >= 0) area += rows[y - 1][x];
+                    if (y - 1 >= 0 && x + 1 < rows[0].Length) area += rows[y - 1][x + 1];
+                    if (x - 1 >= 0) area += rows[y][x - 1];
+                    if (x + 1 < rows[0].Length) area += rows[y][x + 1];
+                    if (y + 1 < rows.Length && x - 1 >= 0) area += rows[y + 1][x - 1];
+                    if (y + 1 < rows.Length) area += rows[y + 1][x];
+                    if (y + 1 < rows.Length && x + 1 < rows[0].Length) area += rows[y + 1][x + 1];
+                    if (area.Count('@') < 4)
+                    {
+                        reachable++;
+                        changed = true;
+                        char[] row = rows[y].ToCharArray();
+                        row[x] = 'x';
+                        rows[y] = new string(row);
+                    }
+                }
+            }
+        }
+        while (changed);
+
+        Console.WriteLine($"Part 2: {reachable}");
         Console.ForegroundColor = ConsoleColor.White;
     }
 }
